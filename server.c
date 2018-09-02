@@ -63,7 +63,7 @@ int main(){
   /* Set port number, using htons function to use proper byte order */
   serverAddr.sin_port = htons(5432);
   /* Set IP address to localhost */
-  serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+  serverAddr.sin_addr.s_addr = inet_addr("172.17.0.2");
   /* Set all bits of the padding field to 0 */
   memset(serverAddr.sin_zero, '\0', sizeof serverAddr.sin_zero);
 
@@ -77,15 +77,15 @@ int main(){
     printf("Error\n");
 
   /*---- Accept call creates a new socket for the incoming connection ----*/
-printf("!! I am here\n");
+//printf("!! I am here\n");
   while(1){
   addr_size = sizeof serverStorage;
-  printf("@@ WAITING FOR CONNECTION\n");
+  //printf("@@ WAITING FOR CONNECTION\n");
   newSocket = accept(welcomeSocket, (struct sockaddr *) &serverStorage, &addr_size);
-  printf("## WAITING FOR PACKET\n");
+  //printf("## WAITING FOR PACKET\n");
   recv(newSocket,buffer,1024,0);
-  printf("&& RECEIVED\n");
-  printf("@@ %s\n",buffer);
+  //printf("&& RECEIVED\n");
+  //printf("@@ %s\n",buffer);
   
   /*---- Process the data ----*/
   int num_dogs,num_cats,num_cars,num_trucks;
@@ -96,7 +96,7 @@ printf("!! I am here\n");
   	char arr[100];
         int size=0;
         int x=buffer[index]-48;
-        printf("**%d**\n",x);
+        //printf("**%d**\n",x);
         index=index+2;
         while(buffer[index]!=' ' && buffer[index]!='\0'){
 		arr[size++]=buffer[index++];
@@ -117,7 +117,7 @@ printf("!! I am here\n");
   /* The values num_cats,num_dogs,num_cars,num_trucks contain the
      number of photos required by the client */
   /*---- Send message to the socket of the incoming connection ----*/
-  printf("%d %d %d %d\n",num_cats,num_dogs,num_cars,num_trucks);
+  //printf("%d %d %d %d\n",num_cats,num_dogs,num_cars,num_trucks);
   //strcpy(buffer,"Hello World\n");
  /* printf("$$ SENDING\n");
   buffer[0]=num_cats+48;buffer[1]=num_dogs+48;buffer[2]=num_cars+48;
@@ -140,9 +140,9 @@ printf("!! I am here\n");
 } 
 
   while(total!=0)
-{ printf("%d %d %d %d %d\n",total,num_cats,num_dogs,num_cars,num_trucks);
+{ //printf("%d %d %d %d %d\n",total,num_cats,num_dogs,num_cars,num_trucks);
      while(num_cats!=0)
-  {printf("reached1");
+  {//printf("reached1");
       temp=rand()%4; 
       while(count[0][temp]!=0)
     {
@@ -161,7 +161,7 @@ printf("!! I am here\n");
       num_cats--;
   }
      while(num_dogs!=0)
-  {printf("reached2");
+  {//printf("reached2");
       temp=rand()%4; 
       while(count[1][temp]!=0)
     {
@@ -181,7 +181,7 @@ printf("!! I am here\n");
   }
 
      while(num_cars!=0)
-  { printf("reached");
+  { //printf("reached");
       temp=rand()%4; 
       while(count[2][temp]!=0)
     {
@@ -195,12 +195,12 @@ printf("!! I am here\n");
      //strcpy(res,str1);
      //strcat(res,str2);
      //strcat(res,str3);
-      printf("%s\n",str);
-      printf("qw");
+      //printf("%s\n",str);
+      //printf("qw");
       lsize=write_image_to_buffer(str);  
-       printf("**%d",lsize);
-       printf("rw");
-       printf("!!!%d\n",strlen(buffer)+1);
+       //printf("**%d",lsize);
+       //printf("rw");
+       //printf("!!!%d\n",strlen(buffer)+1);
       int num = htonl(lsize);
       write(newSocket,&num,sizeof(num));
       send(newSocket,buffer,lsize,0);   
@@ -211,7 +211,7 @@ printf("!! I am here\n");
   }
      while(num_trucks!=0)
   {
-	printf("reached3");
+	//printf("reached3");
       temp=rand()%4; 
       while(count[3][temp]!=0)
     {
@@ -230,7 +230,7 @@ printf("!! I am here\n");
 
 
   total--;
-printf("%d\n",total);
+//printf("%d\n",total);
 }
  
  

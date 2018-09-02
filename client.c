@@ -25,7 +25,7 @@ int main(){
   /* Set port number, using htons function to use proper byte order */
   serverAddr.sin_port = htons(5432);
   /* Set IP address to localhost */
-  serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+  serverAddr.sin_addr.s_addr = inet_addr("172.17.0.2");
   /* Set all bits of the padding field to 0 */
   memset(serverAddr.sin_zero, '\0', sizeof serverAddr.sin_zero);
 
@@ -49,7 +49,7 @@ int main(){
     char arr[100];
         int size=0;
         int x=buffer[index]-48;
-        printf("**%d**\n",x);
+        //printf("**%d**\n",x);
         index=index+2;
         while(buffer[index]!=' ' && buffer[index]!='\0'){
     arr[size++]=buffer[index++];
@@ -75,7 +75,7 @@ int main(){
     int size=0;
     read(clientSocket, &size, sizeof(size));
     size=ntohl(size);
-    printf("**%d",size);
+    //printf("**%d",size);
     recv(clientSocket, buffer, 10000, 0);
     if(i<num_cats){
       sprintf(filename ,"cat%d.jpg",i+1);

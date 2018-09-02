@@ -1,0 +1,13 @@
+** NAME **     - ** ROLL NUMBER **   - ** Contributions **
+Vara Prasad    -   160337            -  Parsed the received query on server side to get the quantity of each category.
+Radhit Dedania -   150544            -  Randomly selected the required images, placed them in buffer in binary form and sent it to client one image per response.
+Ankit Kumar    -   160120            -  Received the binary version of a jpg file, one at a time, and converted it back to a jpg file. 
+Abhinav Kumar  -   160019            -  Took the converted jpg files and wrote a bash script to create the html file and place the images aesthetically in a table on browser.
+
+
+** Collective Contributions **
+1. Planning the flow of the assignment.
+2. Debugging the code server.c and client.c.
+3. Running the server on Docker container and connecting client to it.
+
+
